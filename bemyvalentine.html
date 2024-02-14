@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap">
+    <script src="codevalentine.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>With lob 4 u</title>
+    <style>
+        body {
+            font-family: 'Press Start 2P', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: rgba(252, 21, 21, 0.799);
+            overflow: hidden; /* Para que no haya scrollbars */
+            position: relative;
+        }
+        .pattern {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(to right, rgba(255, 255, 255, 0.3) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.3) 1px, transparent 1px),
+                url('https://static.vecteezy.com/system/resources/previews/015/309/631/non_2x/heart-icon-on-transparent-background-free-png.png');
+            background-size: 100px, 1000px, 100px, 0px;
+            background-blend-mode: normal, normal, overlay;
+        }
+        .lines {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-image:                
+                linear-gradient(to bottom, rgb(252, 159, 159) 5px, transparent 0px);
+            background-size: 30px 30px;
+        }
+        .questions {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 999;
+            background-color: rgb(243, 255, 168);
+            padding: 20px;
+            border-radius: 60px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+            font-size: 30px;
+            line-height: 1.5;
+            padding: 75px;
+            text-align: center;           
+        }
+        .yes{
+            font-family: 'Press Start 2P', sans-serif;
+            background-color: red;
+            color: white;
+            font-size: 50px;
+            size: 200px 200px;
+            z-index: 1001;
+        }
+        .no{
+            font-family: 'Press Start 2P', sans-serif;
+            background-color: black;
+            color: white;
+            font-size: 50px;
+            size: 200px 200px;
+            z-index: 1000;
+        }
+        .cow{
+            font-size: 50px;
+            z-index: 900;            
+            position: relative;         
+            height: 100vh;               
+        }        
+
+        .hearts{
+            z-index: 1003;
+            position: relative;
+            width: 100vh;
+            height: 100vh;
+        }
+
+        .heart{
+            z-index: 1003;
+            position: absolute;            
+        }
+
+        #cowImage{
+            z-index: 1003;            
+            position: absolute;
+            max-width: 150px;
+            top: 50%;
+            left: 50%;          
+            transform: translate(-50%, -50%);  
+        }
+        button{
+            border-radius: 50px;
+            padding: 40px;
+        }
+    </style>
+</head>
+<body>    
+    
+    <div class="pattern"></div>
+    <div class="lines"></div>
+    <div class="gudix"></div>      
+    <div class="questions"> <p id="textValentine">Please, be my valentine</p>
+        <button class="yes" onclick="yesOption()">Yes</button>
+        <button class="no" onclick="noOption()">No</button>
+    </div>
+        
+      
+    <div class="cow">
+        <img onclick="cowTouch()" id="cowImage" src="assets/cow-left.png">
+        <div class="hearts">
+            <audio id="popLoveSoundTag" ></audio>
+            <audio id="popSoundTag" src="ruta/al/archivo-de-audio.mp3"></audio>
+             
+        </div>
+        
+    </div>    
+    
+
+    <div>
+        <script> 
+            //alert("Hola, no seas tan traviesa mientras tomas este viaje :)")           
+            //alert("Haz caso omiso al aviso anterior, bromea, juega, picale, muevele, divertete, sé feliz y lo más importante sé quien eres <3")
+        </script>
+    </div>        
+</body>
+</html>
