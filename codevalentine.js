@@ -345,7 +345,7 @@ function popSound(loveSound){
         soundTag = document.getElementById("popLoveSoundTag");
         soundTag.src = "assets/sounds/poplove" + Math.floor((Math.random()*2)+1) + ".mp3";
     }else{  
-        if(Math.floor((Math.random()*150)+1) == 3){
+        if(Math.floor((Math.random()*100)+1) == 3){
             soundTag.src = "assets/sounds/secretsound.mp3";
         }else{
             if(Math.floor((Math.random()*35)+1) == 3){
