@@ -275,7 +275,7 @@ function cowTouch(){
 
 function generateHeartsInScreen(){
     heartsDiv = document.getElementsByClassName("hearts")[0];    
-    for (i = 0 ; i < Math.floor(Math.random() * (500-100) + 150) ; i++){
+    for (i = 0 ; i < Math.floor(Math.random() * 250 + 50) ; i++){
         heartGenerated = randomHeartsTags(heartsDiv);        
         heartsDiv.insertAdjacentHTML("afterbegin", heartGenerated);        
     }   
@@ -312,10 +312,12 @@ function popheart(event){
     var heartElement = event.target;
     var heartId = heartElement.dataset.id; // Obtiene el ID único del corazón
 
-    // Calcula el ancho máximo y asigna un intervalo para este corazón
-    var maxWidthPop = Math.random() * 500 + 100;
-    intervalIds[heartId] = setInterval(function() {        
+    // Limpia cualquier intervalo previamente asociado con este corazón
+    clearInterval(intervalIds[heartId]);
 
+    // Calcula el ancho máximo y asigna un nuevo intervalo para este corazón
+    var maxWidthPop = Math.random() * 500 + 100;
+    intervalIds[heartId] = setInterval(function() {
         var widthHeart = heartElement.offsetWidth; // Obtiene y actualiza el ancho actual del corazón en cada iteración
         var posXHeart = heartElement.offsetLeft;
         var posYHeart = heartElement.offsetTop;
@@ -332,12 +334,11 @@ function popheart(event){
 
         if (widthHeart > maxWidthPop) {
             heartElement.style.display = 'none';
-            clearInterval(intervalIds[heartId]);
-            popSound(false) // Detiene el intervalo asociado con este corazón
+            clearInterval(intervalIds[heartId]); // Detiene el intervalo asociado con este corazón
+            popSound(false); // Detiene el sonido asociado con este corazón
         }
     }, 25);
 }
-
 function popSound(loveSound){
     
     if(loveSound){
