@@ -120,7 +120,7 @@ function moveCow(){
         stop = true;
         //Mensaje que vamos a mostrar con un math.random
         console.log(texts.lenght)
-        messageToShow = Math.floor(Math.random()* 20 + 1)
+        messageToShow = Math.floor(Math.random()* 22 + 1)
     }
 
     if (stop){
