@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap">
+    <style>
+        body{
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .pattern {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(to right, rgba(255, 255, 255, 0.3) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.3) 1px, transparent 1px),
+                url('https://static.vecteezy.com/system/resources/previews/015/309/631/non_2x/heart-icon-on-transparent-background-free-png.png');
+            background-size: 100px, 1000px, 100px, 0px;
+            background-blend-mode: normal, normal, overlay;
+        }
+        .lines {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-image:                
+            linear-gradient(to bottom, rgb(252, 159, 159) 5px, transparent 0px);
+            background-size: 30px 30px;
+        }
+        
+        #photoMemory{
+            margin: 0px;
+            padding: 0px;
+            max-width: 100%;
+            height: 100vh;
+            display: block; /* Esto es importante para asegurar que la imagen se ajuste correctamente */
+            margin: 0 auto;
+        }
+
+        .cow{
+            font-size: 50px;
+            z-index: 900;            
+            position: relative;         
+            height: 100vh;               
+        }           
+        #cowImage{
+            z-index: 1003;            
+            position: absolute;
+            max-width: 350px;
+            top: 50%;
+            left: 50%;                      
+            transform: scaleX(1)  
+        }
+        #text{
+            position: relative;
+            z-index: 999;               
+        }
+
+        #imgDialogue{
+            width: 700px;
+            position: absolute;         
+            z-index: 1003;
+            visibility: hidden;
+        }
+
+        #textDialogue{
+            font-family: 'Press Start 2P', sans-serif;
+            position: absolute; 
+            font-size: 30px;            
+            visibility: hidden;
+            padding-top: 40px;                  
+            max-width: 500px;      
+            text-align: center;  
+            padding-left: 135px;
+            padding-top: 50px;
+            line-height: 1.5;
+            text-shadow: 
+            -2px -2px 0 #007c15,  
+            2px -2px 0 #007c15,
+            -2px 2px 0 #007c15,
+            2px 2px 0 #007c15; /* Sombra para crear un contorno blanco */
+
+        }
+    </style>
+    <script src="talkingPhotos.js"></script>
+    <body>        
+        <div class="pattern"></div>
+        <div class="lines"></div>
+        <div class="cow">
+            <img onclick="cowTouch()" id="cowImage" src="assets/cow-left.png">
+            <div id="text">
+                <img id="imgDialogue" src="assets/textDialogue.png">
+                <p id="textDialogue">Como sabías que lo que yo quería era salir a comer? </p>
+            </div>
+        <div>
+            <img id="photoMemory">
+        </div>
+    </body>    
+</html>

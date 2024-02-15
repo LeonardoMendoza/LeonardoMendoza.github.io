@@ -6,6 +6,7 @@ moveSide = 0;
 rightSide = true;
 downSide = true; 
 moveDownCount = 0;
+countCow = 0;
 
 yesBotonConst = '<button class="yes" onclick="yesOption()">Yes</button>'
 
@@ -72,13 +73,13 @@ function runBoton(evento){
 
     if (runTimes == 28){
         alert("O sea que vas a seguir el no hasta alcanzarlo...");
-        //alert("Me dejaste sin opciones, ya no te dejaré picarle a la página...");
-        //alert("...");
-        //alert("...");
-        //alert("Esta bien, te daré una oportunidad más, no vayas a confundirte de botón y dale al que diga "Yes" :D");
+        alert("Me dejaste sin opciones, ya no te dejaré picarle a la página...");
+        alert("...");
+        alert("...");
+        alert("Esta bien, te daré una oportunidad más, no vayas a confundirte de botón y dale al que diga 'Yes' :D");
         document.getElementsByClassName("no")[0].remove();
         questions = document.getElementsByClassName("questions")[0];
-        howManyYES = Math.random()*50 + 3
+        howManyYES = Math.random()*50 + 5 
         for(i=0; i < howManyYES; i++){
             document.body.insertAdjacentHTML("beforeend", generateRandomYESBotons())              
         }
@@ -92,7 +93,6 @@ function runBoton(evento){
 }
 
 function yesOption(){
-    console.log("noCOunt at yes: " + noCount)
     beMyValentine = document.getElementById("textValentine");
     if (noCount == 0){
         beMyValentine.innerHTML = "Sabía que desde el inicio me dirías que si, gracias por ser mi novia amor";
@@ -175,8 +175,7 @@ function generateRandomYESBotons(){
     altoVentana = window.innerHeight;
 
     posX = Math.random() * anchoVentana;
-    posY = Math.random() * altoVentana;
-    console.log("X:" + posX + " Y: " + posY);
+    posY = Math.random() * altoVentana;    
     newPositionStyle = 'style= "position: fixed; top:' + posY + 'px; left:'+  posX + 'px;"'
     return '<button class="yes" onclick="yesOption()"' + newPositionStyle + '>Yes</button>'
 }
@@ -212,28 +211,20 @@ function moveCow(){
         }                
     }
 
-    if(moveDownCount == 200){
-        console.log("Evaluando hacia arriba o hacia abajo : " + Math.floor(direction))
+    if(moveDownCount == 200){        
         if(Math.floor(direction) % 2 == 0 ){
             //Arriba
-            console.log("Hacia arriba")
             downSide = false;
             
         }else{            
             //Abajo
-            console.log("Hacia abajo")
             downSide = true;
         }   
         moveDownCount = 0;     
     }
 
-
-
     //if para actualizar el lado al que mira la vaca derecha/izquierda
     if(moveSide == 200){
-        console.log("*****************************************************************")
-        console.log("Direction: " + Math.floor(direction) % 2)
-        console.log("Direction" + Math.floor(direction) % 2 == 0 )
         if(Math.floor(direction) % 2 == 1){
             //derecha
             rightSide = true;
@@ -267,23 +258,26 @@ function moveCow(){
     moveDownCount += 1;
 }
 
-function onWindowBorder(){
-    cowImage = document.getElementById("cowImage");
-
-    cords = cowImage.getBoundingClientRect();
-    anchoVentana = window.innerWidth;
-    altoVentana = window.innerHeight;    
+function cowTouch(){        
+    countCow += 1;
+    if(countCow == 5){
+        alert("Ven, sigueme, tengo que mostrarte algo");
+        alert("...");
+        alert("Pero vayamos a mi lugar favorito");
+        // Redirigir a otra página después de 2 segundos
+        setTimeout(function() {
+            window.location.href = "muchlove.html"; // Cambia "nueva_pagina.html" por la URL de la página a la que deseas redirigir
+        }, 2000); // 2000 milisegundos (2 segundos)
+    }else{
+        alert("Muuuuu");
+    }
 }
 
-function cowTouch(){
-    alert("Muuuuu");
-}
 function generateHeartsInScreen(){
     heartsDiv = document.getElementsByClassName("hearts")[0];    
     for (i = 0 ; i < Math.floor(Math.random() * (500-100) + 150) ; i++){
         heartGenerated = randomHeartsTags(heartsDiv);        
-        heartsDiv.insertAdjacentHTML("afterbegin", heartGenerated);
-        console.log("Corazon generado: " + i);
+        heartsDiv.insertAdjacentHTML("afterbegin", heartGenerated);        
     }   
 }
 
@@ -320,8 +314,7 @@ function popheart(event){
 
     // Calcula el ancho máximo y asigna un intervalo para este corazón
     var maxWidthPop = Math.random() * 500 + 100;
-    intervalIds[heartId] = setInterval(function() {
-        console.log("En el intervalo");
+    intervalIds[heartId] = setInterval(function() {        
 
         var widthHeart = heartElement.offsetWidth; // Obtiene y actualiza el ancho actual del corazón en cada iteración
         var posXHeart = heartElement.offsetLeft;
@@ -331,12 +324,8 @@ function popheart(event){
         heartElement.style.width = (widthHeart + 10) + "px";
         heartElement.style.top = (posYHeart - 5) + "px";
 
-        console.log(heartElement.width);
-
-        if(widthHeart > (maxWidthPop - 450) && widthHeart < (maxWidthPop - 350)){
-            console.log("paso");
-            if(Math.floor(Math.random()*15) == 4){
-                console.log("paso2");
+        if(widthHeart > (maxWidthPop - 450) && widthHeart < (maxWidthPop - 350)){            
+            if(Math.floor(Math.random()*15) == 4){                
                 popSound(true);
             }
         }
@@ -355,16 +344,17 @@ function popSound(loveSound){
         soundTag = document.getElementById("popLoveSoundTag");
         soundTag.src = "assets/sounds/poplove" + Math.floor((Math.random()*2)+1) + ".mp3";
     }else{  
-        if(Math.floor((Math.random()*35)+1) == 3){
-            soundTag.src = "assets/sounds/pop3.mp3";
+        if(Math.floor((Math.random()*150)+1) == 3){
+            soundTag.src = "assets/sounds/secretsound.mp3";
         }else{
-            soundTag = document.getElementById("popSoundTag");      
-            soundTag.src = "assets/sounds/pop" + Math.floor((Math.random()*2)+1) + ".mp3";
-        }
-        
-
-    }
-    
+            if(Math.floor((Math.random()*35)+1) == 3){
+                soundTag.src = "assets/sounds/pop3.mp3";
+            }else{
+                soundTag = document.getElementById("popSoundTag");      
+                soundTag.src = "assets/sounds/pop" + Math.floor((Math.random()*2)+1) + ".mp3";
+            }
+        }                        
+    }    
     soundTag.play();
 }
 
