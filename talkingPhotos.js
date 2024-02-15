@@ -39,7 +39,7 @@ setInterval(() => {
     console.log("foto colocada"); 
 }, 2500);
 
-setInterval(moveCow,30);
+setInterval(moveCow,10);
 
 
 function cowTouch(){
@@ -114,7 +114,7 @@ function moveCow(){
 
     
     //ifs para colocar la vaca de frente
-    if (direction > 80 && direction < 81 && !stop){
+    if (direction > 78 && direction < 81 && !stop){
         
         cowImage.src = "assets/cow-front.png"   
         stop = true;
@@ -132,8 +132,7 @@ function moveCow(){
         stopCount += 1;                         
     }
 
-    if (stopCount == 250){
-        
+    if (stopCount == 250){        
         stopCount = 0; 
         cowImage.src = "assets/cow-left.png"   
         stop = false; 

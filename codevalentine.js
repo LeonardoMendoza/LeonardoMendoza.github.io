@@ -335,7 +335,7 @@ function popheart(event){
         if (widthHeart > maxWidthPop) {
             heartElement.style.display = 'none';
             clearInterval(intervalIds[heartId]); // Detiene el intervalo asociado con este corazón
-            popSound(false); // Detiene el sonido asociado con este corazón
+            popSound(false); 
         }
     }, 25);
 }
