@@ -1,0 +1,142 @@
+body{
+    overflow: hidden;
+}
+
+span{
+    font-family: 'Press Start 2P', sans-serif;
+    position: absolute;
+    font-size: 50px;
+    display: block !important;
+}
+
+#letterStack{
+    position: absolute;
+}
+
+.invitationHoja{
+    align-items: center;
+    justify-content: center;
+    padding-inline:25%;
+    padding-top: 15%;
+    line-height: 1.2;
+    position: absolute;
+}
+
+#letter{
+    width: 100%;
+    height: 100%;
+    left: 50%;
+    top: -1800px; /*Esto se coloca en 1500, es el ideal*/
+    position: absolute;
+    background-image: url(assets/Letter.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-50%) scale(0.4); 
+}
+
+#letter-heart{
+    transform-origin: center;
+    left: 50%;
+    top: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%) scale(0.4);
+}
+
+#hoja{    
+    position: absolute;
+    background-image: url('assets/HojaB.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transform: translate(-50%, -50%) scale(0.5);
+}
+
+#wind{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    
+}
+
+#monoManon{
+    opacity: 0;
+    position: absolute;
+}
+
+.monoManon{
+    opacity: 1;
+    animation: monoManonFirstEntry 4s linear forwards;
+    transform-origin: center center;
+    position: absolute;    
+}
+
+.winds{
+    position: absolute;
+    animation: windParticle 4s ease-out forwards;
+}
+
+.letterHoja{
+    position:absolute;
+    z-index: 100;
+    transition: transform 4s ease-in-out
+}
+
+.dialog{
+    position: absolute;
+    color: #5dbd28;
+    -webkit-text-stroke: 3px black;
+    z-index: 102;
+    line-height: 1.2;    
+}
+
+@keyframes swing {
+    0% { transform: translateX(-50%) scale(0.4) rotate(-20deg); }   /* Girar a la izquierda */
+    25% { transform: translateX(-50%) scale(0.4) rotate(20deg); }    /* Girar a la derecha */
+    50% { transform: translateX(-50%) scale(0.4) rotate(-20deg);}   /* Girar a la izquierda */
+    75% { transform: translateX(-50%) scale(0.4) rotate(20deg);}    /* Girar a la derecha */
+    100% { transform: translateX(-50%) scale(0.4) rotate(-20deg);}   /* Regresa al centro */
+}
+
+@keyframes shake {
+    0% { transform: scale(1) rotate(-5deg); }   /* Girar a la izquierda */
+    25% { transform: scale(1.5) rotate(5deg); }    /* Girar a la derecha */
+    50% { transform: scale(2) rotate(-5deg); }   /* Girar a la izquierda */
+    75% { transform: scale(2.5) rotate(5deg); }    /* Girar a la derecha */
+    100% { transform: scale(3) rotate(0deg);
+    opacity: 0; }   /* Regresa al centro */
+}
+
+@keyframes windParticle {
+    0% { transform: scale(0.4) translateX(10%) translateY(3%) }    
+    20% { transform: scale(0.4) translateX(30%) translateY(-3%) }    
+    40% { transform: scale(0.4) translateX(50%) translateY(3%) }    
+    60% { transform: scale(0.4) translateX(70%) translateY(-3%) }    
+    80% { transform: scale(0.4) translateX(90%) translateY(3%) }    
+    100% { transform: scale(0.4) translateX(110%) translateY(-3%); opacity: 0; }    
+}
+
+@keyframes monoManonFirstEntry {
+    0% { transform: translateX(-50%) scale(0.3) rotate(0deg) }      
+    100% { transform: translateX(200%) scale(0.3)rotate(2880deg) }    
+}
+
+@keyframes moveLetters {
+    from {
+        transform: translate(0, 0);
+    }
+    to {
+        transform: translate(var(--dx), var(--dy));
+    }
+}
+
+@keyframes moveHoja {
+    0% { transform: translateX(10%) translateY(-5%) translate(-50%, -50%) scale(0.5)}
+    20% {transform: translateX(-10%) translateY(5%) translate(-50%, -50%) scale(0.5)}
+    40% { transform: translateX(10%) translateY(-5%) translate(-50%, -50%) scale(0.5)}
+    60% { transform: translateX(-10%) translateY(-5%) translate(-50%, -50%) scale(0.5)}
+    80% { transform: translateX(10%) translateY(5%) translate(-50%, -50%) scale(0.5)}
+    100% { transform: translateX(0%)  translateY(0%) translate(-50%, -50%) scale(0.5)}
+}
